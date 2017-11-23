@@ -2,35 +2,61 @@
 <html>
 	<head>
 		<title>WebPaint</title>
-		<link rel="stylesheet" type="text/css" href=""
+		<link rel="stylesheet" type="text/css" href="WebPaint.css">
 	</head>
 	<body>
 		<section class="mainBody">
 			<header>
 				<nav class="headerNav">
-
+					<ul id="navList">
+						<li><a href="#">Paint</a></li>
+						<li><a href="#">About</a></li>
+						<li><a href="#">Contact</a></li>
+					</ul>
 				</nav>
 			</header>
 
-			<section class ="contentBody">
-				<aside class="buttons">
+			<section class="contentBody">
+				<aside class="paintControls">
 					<form>
-
+						<ul class="paintOptions">
+							<li>Colors</li>
+							<ul class="colorOptions">
+								<li><label for="redRange">Red:</label><input type="range" min="0" max="255" id="redRange" class="colorSlider"></li>
+								<li><label for="greenRange">Green:</label><input type="range" min="0" max="255" id="greenRange" class="colorSlider"></li>
+								<li><label for="blueRange">Blue:</label><input type="range" min="0" max="255" id="blueRange" class="colorSlider"></li>
+							</ul>
+							<li><select name="size">
+								<!-- Placeholder values for now -->
+									<option value="5">5px</option>
+									<option value="8">8px</option>
+									<option value="12">12px</option>
+									<option value="16">16px</option>
+									<option value="24">24px</option>
+									<option value="48">48px</option>
+									<option value="96">96px</option>
+								</select>
+							</li>
+							<li><img class="imageEraser" src="eraser_icon.png" alt="Eraser"></li>
+							<li><input type="button" id="resetbutton" value="Reset Canvas"></li>
+						</ul>
 					</form>
 
 				</aside>
 
 				<article class="paintArea">
-
+					<canvas id="paintCanvas" width="500" height="500"></canvas>
 				</article>
 
 			</section>
 
 			<footer>
-
+				<p>Developed by David Stintzi</p>
+				<p>2017</p>
+				<p><a href="https://github.com/cdnexport/WEBD-1000-Final-Web-Project">GitHub</a>
 			</footer>
 
 		</section>
 	</body>
-	<script src="paintScript"></script>
+	<script src="paintScript.js"></script>
 </html>
