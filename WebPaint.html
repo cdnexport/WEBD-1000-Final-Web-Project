@@ -7,8 +7,9 @@
 	<body>
 		<section class="mainBody">
 			<header>
+				<img src="./img/WebPaintTitle.png" alt="Web Paint Title">
 				<nav class="headerNav">
-					<ul id="navList">
+					<ul class="navList">
 						<li><a href="#">Paint</a></li>
 						<li><a href="#">About</a></li>
 						<li><a href="#">Contact</a></li>
@@ -20,13 +21,13 @@
 				<aside class="paintControls">
 					<form>
 						<ul class="paintOptions">
-							<li>Colors</li>
+							<li>Color Sliders</li>
 							<ul class="colorOptions">
 								<li><label for="redRange">Red:</label><input type="range" min="0" max="255" id="redRange" class="colorSlider"></li>
 								<li><label for="greenRange">Green:</label><input type="range" min="0" max="255" id="greenRange" class="colorSlider"></li>
 								<li><label for="blueRange">Blue:</label><input type="range" min="0" max="255" id="blueRange" class="colorSlider"></li>
 							</ul>
-							<li><select name="size">
+							<li><label for="selectSize">Brush Size</label><select id="selectSize" name="size">
 								<!-- Placeholder values for now -->
 									<option value="5">5px</option>
 									<option value="8">8px</option>
@@ -37,7 +38,7 @@
 									<option value="96">96px</option>
 								</select>
 							</li>
-							<li><img class="imageEraser" src="eraser_icon.png" alt="Eraser"></li>
+							<li><img class="imageEraser" src="./img/eraser_icon.png" alt="Eraser"></li>
 							<li><input type="button" id="resetbutton" value="Reset Canvas"></li>
 						</ul>
 					</form>
@@ -45,15 +46,15 @@
 				</aside>
 
 				<article class="paintArea">
-					<canvas id="paintCanvas" width="500" height="500"></canvas>
+					<canvas id="paintCanvas"></canvas>
 				</article>
 
 			</section>
 
 			<footer>
 				<p>Developed by David Stintzi</p>
-				<p>2017</p>
-				<p><a href="https://github.com/cdnexport/WEBD-1000-Final-Web-Project">GitHub</a>
+				<p>Created November 2017 for Red River College - WEBD-1000</p>
+				<p><a href="https://github.com/cdnexport/WEBD-1000-Final-Web-Project">View on GitHub</a>
 			</footer>
 
 		</section>
