@@ -3,6 +3,7 @@
 	<head>
 		<title>WebPaint</title>
 		<link rel="stylesheet" type="text/css" href="WebPaint.css">
+		<script src="paintScript.js"></script>
 	</head>
 	<body>
 		<section class="mainBody">
@@ -22,11 +23,13 @@
 					<form>
 						<ul class="paintOptions">
 							<li>Color Sliders</li>
-							<ul class="colorOptions">
-								<li><label for="redRange">Red:</label><input type="range" min="0" max="255" id="redRange" class="colorSlider"></li>
-								<li><label for="greenRange">Green:</label><input type="range" min="0" max="255" id="greenRange" class="colorSlider"></li>
-								<li><label for="blueRange">Blue:</label><input type="range" min="0" max="255" id="blueRange" class="colorSlider"></li>
-							</ul>
+							<li>
+								<ul class="colorOptions">
+									<li><label for="redRange">Red:</label><input type="range" min="0" max="255" id="redRange" class="colorSlider"></li>
+									<li><label for="greenRange">Green:</label><input type="range" min="0" max="255" id="greenRange" class="colorSlider"></li>
+									<li><label for="blueRange">Blue:</label><input type="range" min="0" max="255" id="blueRange" class="colorSlider"></li>
+								</ul>
+							</li>
 							<li><label for="selectSize">Brush Size</label><select id="selectSize" name="size">
 								<!-- Placeholder values for now -->
 									<option value="5">5px</option>
@@ -59,5 +62,4 @@
 
 		</section>
 	</body>
-	<script src="paintScript.js"></script>
 </html>
