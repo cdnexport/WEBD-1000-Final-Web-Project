@@ -80,9 +80,16 @@ function getColor(e){
 	let mouseY = e.offsetY;
 
 	let colorData = ctx.getImageData(mouseX,mouseY,1,1).data;
-	document.getElementById("redRange").value = colorData[0];
-	document.getElementById("greenRange").value = colorData[1];
-	document.getElementById("blueRange").value = colorData[2];
+	if(colorData[0]+colorData[1]+colorData[2]==0){
+		document.getElementById("redRange").value = 255;
+		document.getElementById("greenRange").value = 255;
+		document.getElementById("blueRange").value = 255;
+	}
+	else{
+		document.getElementById("redRange").value = colorData[0];
+		document.getElementById("greenRange").value = colorData[1];
+		document.getElementById("blueRange").value = colorData[2];
+	}
 
 	fillListBackground();
 }
