@@ -21,7 +21,6 @@ function load(){
 	//For the canvas element.
 	var mousedown=false;
 	document.getElementById("paintCanvas").addEventListener("mousedown",()=>{
-		console.log("TOO MANY");
 		mousedown=true;
 	});
 	document.getElementById("paintCanvas").addEventListener("mousemove",(e)=>{
