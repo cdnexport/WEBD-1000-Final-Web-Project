@@ -35,15 +35,22 @@ function load(){
 
 	//for the eraser.
 	var willErase = false;
-	document.getElementById("imageEraser").addEventListener("click",(e)=>{
+	document.getElementById("imageEraser").addEventListener("click",()=>{
 		if(!letDrop){
 			willErase = !willErase;
-			setEraserBackground(e,willErase);
+			setEraserBackground(willErase);
 		}
 	});
 
 	//For the reset button.
-	document.getElementById("btnReset").addEventListener("click",resetCanvas);
+	document.getElementById("btnReset").addEventListener("click",()=>{
+		willErase = false;
+		letDrop = false;
+		setEraserBackground(willErase);
+		setDropperBackground(letDrop);
+
+		resetCanvas();
+	});
 
 	//For the dropper.
 	var letDrop = false;
@@ -113,7 +120,7 @@ function createCanvas(){
 }
 
 //Occurs when the eraser checkbox is pressed
-function setEraserBackground(e,willErase){
+function setEraserBackground(willErase){
 	let li = document.getElementById("liEraser");
 	if(willErase){
 		li.style.backgroundColor = "grey";
