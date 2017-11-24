@@ -1,7 +1,7 @@
 //var mousedown = false;
 function load(){
 	createCanvas();
-
+	fillListBackground();
 	//For the color sliders.
 	var intervalId;
 	var colorSliders = document.getElementsByClassName("colorSlider");
@@ -38,8 +38,18 @@ function load(){
 		willErase = !willErase;
 		setEraserBackground(e,willErase);
 	});
+
+	//For the reset button.
+	document.getElementById("btnReset").addEventListener("click",resetCanvas);
 }
 
+function resetCanvas(){
+	let canvas = document.getElementById("paintCanvas")
+	let ctx = canvas.getContext("2d");
+	if(ctx){
+		ctx.clearRect(0,0,canvas.width,canvas.height);
+	}
+}
 //Creates the canvas and places it onto the page.
 function createCanvas(){
 	let canvas = document.createElement("canvas");
