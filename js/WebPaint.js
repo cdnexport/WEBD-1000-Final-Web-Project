@@ -68,29 +68,36 @@ function load(){
 		setDropperBackground(letDrop);
 	});
 
-	//For the image from the web
-	document.getElementById("btnImgWeb").addEventListener("click",(e)=>{
-		console.log("CLICK");
-		if(imageLinkHasErrors()){
-			e.preventDefault();
-			console.log("PREVENT");
-		}
-		else{
-			drawImage();
-			document.getElementById("imgWeb").value = "";
-		}
+	//For the file image
+	document.getElementById("imgWeb").addEventListener("change",(e)=>{
+		//console.log(document.getElementById("imgWeb").value);
+		//handleFiles();
 	});
 }
 
+function handleFiles(files){
+	console.log(files);
+	if (!files.length){
+		alert("no file selected");
+	}
+	else{
+		let img = new Image();
+		img.src = window.URL.createObjectURL(files[0]);
+		img.onload = () => {
+			window.URL.revokeObjectURL(this.src);
+		}
+		drawImage(img);
+	}
+}
 //Draws the image link to the canvas.
-function drawImage(){
+function drawImage(image){
 	let canvas = document.getElementById("paintCanvas")
 	let ctx = canvas.getContext("2d");
 	let link = document.getElementById("imgWeb").value;
 
-	let image = new Image();
-	image.crossorigin = "Anonymous";
-	image.src = link;
+	//let image = new Image();
+	//image.crossorigin = "Anonymous";
+	//image.src = link;
 	image.onload = () =>{
 		ctx.drawImage(image,0,0,canvas.width,canvas.height);
 	}
