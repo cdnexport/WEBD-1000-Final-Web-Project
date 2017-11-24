@@ -87,7 +87,7 @@ function getColor(e){
 	let mouseY = e.offsetY;
 
 	let colorData = ctx.getImageData(mouseX,mouseY,1,1).data;
-	if(colorData[0]+colorData[1]+colorData[2]==0){
+	if(colorData[3]==0){
 		document.getElementById("redRange").value = 255;
 		document.getElementById("greenRange").value = 255;
 		document.getElementById("blueRange").value = 255;
