@@ -103,7 +103,7 @@ footer p{
 }
 footer a{
 	padding-left:10px;
-	text-decoration: none;
+	text-decoration: underline;
 	color:#000000;
 }
 footer a:visited{
