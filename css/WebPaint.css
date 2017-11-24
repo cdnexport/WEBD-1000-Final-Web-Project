@@ -80,8 +80,8 @@ ul.colorOptions input{
 	position:absolute;
 	left:65px;
 }
-#chkEraser{
-	opacity: 0;
+#liEraser{
+  height:154.5px;
 }
 
 article.paintArea{
