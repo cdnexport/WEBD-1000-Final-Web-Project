@@ -3,3 +3,51 @@ section.contentBody{
 	height:553px;
 	background-color:coral;
 }
+table{
+	padding-top: 50px;
+	margin: 0 auto;
+}
+
+th{
+	padding-top:20px;
+	padding-bottom: 20px;
+	margin-top:0;
+	text-align: center;
+	font-size:larger;
+}
+td{
+	padding-bottom: 20px;
+}
+td.lbl{
+	text-align: right;
+	padding-right: 20px;
+}
+textarea{
+	resize: none;
+}
+td.ta{
+	padding-bottom: 0px;
+}
+td.textAreaErrorTd{
+	padding-top: 0px;
+}
+td.sub{
+	padding-right: 20px;
+	text-align: right;
+}
+text.errorText{
+	font-style: italic;
+	color:red;
+}
+text#txtNameError{
+	display: none;
+}
+text#txtEmailError{
+	display: none;
+}
+text#txtEmailInvalid{
+	display: none;
+}
+text#txtAreaCommentsError{
+	display: none;
+}

@@ -19,14 +19,35 @@
 			</header>
 
 			<section class="contentBody">
-				<h1>Contact the Developer</h1>
 				<form>
-					<label for="txtName">Enter your name:</label><input id="txtName" type="text">
-					<label for="txtEmail">Enter your email:</label><input id="txtEmail" type="text">
-					<label for="txtAreaComments">Comments:</label><textarea id="txtAreaComments" cols="50" rows="4"></textarea>
-
-					<input type="submit" value="Submit">
-					<input type="reset" value="Reset">
+					<table>
+						<thead>
+							<tr>
+								<th colspan="2">Contact the Developer</th>
+							</tr>
+						<tbody>
+							<tr>
+								<td class="lbl"><label for="txtName">Enter your name:</label></td>
+								<td><input id="txtName" type="text"><text id="txtNameError" class="errorText">* Field is required.</text></td>
+							</tr>
+							<tr>
+								<td class="lbl"><label for="txtEmail">Enter your email:</label></td>
+								<td><input id="txtEmail" type="text"><text id="txtEmailError" class="errorText">* Field is required.</text><text class="errorText" id="txtEmailInvalid">* Email entered is invalid.</text></td>
+							</tr>
+							<tr>
+								<td class="lbl"><label for="txtAreaComments">Comments:</label></td><td class="ta"><textarea id="txtAreaComments" cols="50" rows="4"></textarea></td>
+							</tr>
+							<tr>
+								<td></td>
+								<td class="textAreaErrorTd"><text id="txtAreaCommentsError" class="errorText">* Field is required.</text></td>
+							</tr>
+							</tr>
+							<tr>
+								<td class="sub"><input type="submit" value="Submit"></td>
+								<td class="res"><input type="reset" value="Reset"></td>
+							</tr>
+						</tbody>
+					</table>
 				</form>
 			</section>
 
@@ -35,7 +56,6 @@
 				<p>Created November 2017 for Red River College - WEBD-1000</p>
 				<p><a href="https://github.com/cdnexport/WEBD-1000-Final-Web-Project">View on GitHub</a>
 			</footer>
-
 		</section>
 	</body>
 </html>
