@@ -89,7 +89,7 @@ function drawImage(){
 	let link = document.getElementById("imgWeb").value;
 
 	let image = new Image();
-	image.crossorigin = "anonymous";
+	image.crossorigin = "Anonymous";
 	image.src = link;
 	image.onload = () =>{
 		ctx.drawImage(image,0,0,canvas.width,canvas.height);
