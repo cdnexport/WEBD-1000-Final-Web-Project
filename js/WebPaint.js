@@ -67,6 +67,33 @@ function load(){
 		}
 		setDropperBackground(letDrop);
 	});
+
+	//for the cursors
+	document.getElementById("paintCanvas").addEventListener("mouseover", ()=>{
+		if(letDrop){
+			setCursor("./img/cursors/droppercursor.png");
+		}
+		else if(willErase){
+			setCursor("./img/cursors/erasercursor.png");
+		}
+		else{
+			setCursor("./img/cursors/brushcursor.png");
+		}
+	})
+}
+
+function setCursor(cursor){
+	let img = new Image();
+	img.src = cursor;
+	img.width = document.getElementById("selectSize").value;
+	img.height = document.getElementById("selectSize").value;
+	let img2 = document.createElement("img");
+	img2.src = cursor;
+	img2.width = document.getElementById("selectSize").value;
+	img2.height = document.getElementById("selectSize").value;
+
+	console.log(img);
+	document.getElementById("paintCanvas").style.cursor = "url("+img.src+"),auto";
 }
 
 //Occurs when the file chosen is changed
