@@ -64,9 +64,28 @@ function load(){
 		if(letDrop){
 			getColor(e);
 			letDrop = !letDrop;
+			setCursor("./img/cursors/brushcursor.png");
 		}
 		setDropperBackground(letDrop);
 	});
+
+	//for the cursors
+	document.getElementById("paintCanvas").addEventListener("mouseover", ()=>{
+		if(letDrop){
+			setCursor("./img/cursors/droppercursor.png");
+		}
+		else if(willErase){
+			setCursor("./img/cursors/erasercursor.png");
+		}
+		else{
+			setCursor("./img/cursors/brushcursor.png");
+		}
+	})
+}
+
+//Sets the cursor
+function setCursor(cursor){
+	document.getElementById("paintCanvas").style.cursor = "url("+cursor+"),auto";
 }
 
 //Occurs when the file chosen is changed
