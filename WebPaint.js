@@ -53,8 +53,8 @@ function resetCanvas(){
 function createCanvas(){
 	let canvas = document.createElement("canvas");
 	canvas.id = "paintCanvas";
-	canvas.width=606;
-	canvas.height=507;
+	canvas.width=605;
+	canvas.height=551;
 	let art = document.getElementById("articleCanvas");
 	art.appendChild(canvas);
 }
