@@ -4,6 +4,7 @@
 		<title>WebPaint - Contact</title>
 		<link rel="stylesheet" type="text/css" href="WebPaint.css">
 		<link rel="stylesheet" type="text/css" href="Contact.css">
+		<script src="Contact.js"></script>
 	</head>
 	<body>
 		<section class="mainBody">
@@ -19,7 +20,7 @@
 			</header>
 
 			<section class="contentBody">
-				<form>
+				<form action="http://stungeye.com/school/webdev/thankyou.php" method="post">
 					<table>
 						<thead>
 							<tr>
@@ -43,8 +44,8 @@
 							</tr>
 							</tr>
 							<tr>
-								<td class="sub"><input type="submit" value="Submit"></td>
-								<td class="res"><input type="reset" value="Reset"></td>
+								<td class="sub"><input id="btnSubmit" type="submit" value="Submit"></td>
+								<td class="res"><input id="btnReset" type="reset" value="Reset"></td>
 							</tr>
 						</tbody>
 					</table>
