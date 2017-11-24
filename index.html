@@ -45,7 +45,9 @@
 							<div id="liEraser"><li><img id="imageEraser" class="imageEraser" src="./img/eraser_icon.png" alt="Eraser"></li>
 							</div>
 							<form action="#" method="post">
-								<li><label for="imgWeb">Add an image:</label><input type="file" id="imgWeb" size="32" onchange="handleFiles(this.files)">
+								<li><label for="imgWeb">Add an image:</label>
+									<input type="file" id="imgWeb" size="32" onchange="handleFiles(this.files)">
+									<input type="button" value="Browse..." onclick="document.getElementById('imgWeb').click();">
 								<li><text id="imgWebInvalid" class="imgWebError">* Please enter a valid image file.</text></li>
 							</form>
 							<li><input type="button" id="btnReset" value="Reset Canvas"></li>

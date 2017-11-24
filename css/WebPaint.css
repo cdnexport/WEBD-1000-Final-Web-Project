@@ -87,6 +87,9 @@ text.imgWebError{
 	color:red;
 	font-style: italic;
 }
+#imgWeb{
+	display: none;
+}
 #imgWebError{
 	display:none;
 }
