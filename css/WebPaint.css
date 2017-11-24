@@ -83,7 +83,16 @@ ul.colorOptions input{
 #liEraser{
   height:154.5px;
 }
-
+text.imgWebError{
+	color:red;
+	font-style: italic;
+}
+#imgWebError{
+	display:none;
+}
+#imgWebInvalid{
+	display: none;
+}
 article.paintArea{
 	display: inline-block;
 	background-color: #FFFFFF;
