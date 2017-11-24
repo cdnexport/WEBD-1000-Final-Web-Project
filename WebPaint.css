@@ -67,6 +67,9 @@ ul.paintOptions select{
 ul.paintOptions:first-of-type{
 	line-height: 2;
 }
+img.imgDropper{
+	margin-left:20px;
+}
 ul.colorOptions{
 	list-style:none;
 	padding-left:20px;
