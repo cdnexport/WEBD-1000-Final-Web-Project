@@ -21,7 +21,9 @@ function load(){
 	//For the canvas element.
 	var mousedown=false;
 	document.getElementById("paintCanvas").addEventListener("mousedown",()=>{
-		mousedown=true;
+		if(!letDrop){
+			mousedown=true;
+		}
 	});
 	document.getElementById("paintCanvas").addEventListener("mousemove",(e)=>{
 		let c = fillListBackground();
@@ -31,7 +33,7 @@ function load(){
 		mousedown=false;
 	});
 
-	//for the eraser
+	//for the eraser.
 	var willErase = false;
 	document.getElementById("imageEraser").addEventListener("click",(e)=>{
 		willErase = !willErase;
@@ -40,8 +42,48 @@ function load(){
 
 	//For the reset button.
 	document.getElementById("btnReset").addEventListener("click",resetCanvas);
+
+	//For the dropper.
+	var letDrop = false;
+	document.getElementById("imgDropper").addEventListener("click",(e)=>{
+		letDrop = !letDrop;
+		setDropperBackground(letDrop);
+	});
+	document.getElementById("paintCanvas").addEventListener("click",(e)=>{
+		if(letDrop){
+			getColor(e);
+			letDrop = !letDrop;
+		}
+		setDropperBackground(letDrop);
+	});
 }
 
+//Sets the background color for the dropper image.
+function setDropperBackground(letDrop){
+	if(letDrop){
+		document.getElementById("imgDropper").style.backgroundColor = "grey";
+	}
+	else{
+		document.getElementById("imgDropper").style.backgroundColor = "coral";
+	}
+}
+
+//Gets the color the mouse has clicked on.
+function getColor(e){
+	let canvas = document.getElementById("paintCanvas")
+	let ctx = canvas.getContext("2d");
+	let mouseX = e.offsetX;
+	let mouseY = e.offsetY;
+
+	let colorData = ctx.getImageData(mouseX,mouseY,1,1).data;
+	document.getElementById("redRange").value = colorData[0];
+	document.getElementById("greenRange").value = colorData[1];
+	document.getElementById("blueRange").value = colorData[2];
+
+	fillListBackground();
+}
+
+//Resets the canvas to empty
 function resetCanvas(){
 	let canvas = document.getElementById("paintCanvas")
 	let ctx = canvas.getContext("2d");
@@ -96,7 +138,6 @@ function mouseMoveHandler(e,mousedown,color,willErase){
 }
 //Set the background color of the colorOptions list to the active slider color.
 function fillListBackground(){
-
 	let color = 'rgb('+document.getElementById("redRange").value+','+
 		document.getElementById("greenRange").value+','+document.getElementById("blueRange").value+')';
 	
