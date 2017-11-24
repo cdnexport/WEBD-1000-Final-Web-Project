@@ -36,10 +36,12 @@ function load(){
 	//for the eraser.
 	var willErase = false;
 	document.getElementById("imageEraser").addEventListener("click",()=>{
-		if(!letDrop){
-			willErase = !willErase;
-			setEraserBackground(willErase);
+		if(letDrop){
+			letDrop = !letDrop;
+			setDropperBackground(letDrop);
 		}
+		willErase = !willErase;
+		setEraserBackground(willErase);
 	});
 
 	//For the reset button.
@@ -55,10 +57,13 @@ function load(){
 	//For the dropper.
 	var letDrop = false;
 	document.getElementById("imgDropper").addEventListener("click",(e)=>{
-		if(!willErase){
-			letDrop = !letDrop;
-			setDropperBackground(letDrop);
+		if(willErase){
+			willErase = !willErase;
+			setEraserBackground(willErase)
 		}
+		letDrop = !letDrop;
+		setDropperBackground(letDrop);
+		
 	});
 	document.getElementById("paintCanvas").addEventListener("click",(e)=>{
 		if(letDrop){
