@@ -3,7 +3,7 @@
 	<head>
 		<title>WebPaint</title>
 		<link rel="stylesheet" type="text/css" href="WebPaint.css">
-		<script src="paintScript.js"></script>
+		<script src="WebPaint.js"></script>
 	</head>
 	<body>
 		<section class="mainBody">
@@ -24,7 +24,7 @@
 						<ul class="paintOptions">
 							<li>Color Sliders</li>
 							<li>
-								<ul class="colorOptions">
+								<ul class="colorOptions" id="colorOptionsList">
 									<li><label for="redRange">Red:</label><input type="range" min="0" max="255" id="redRange" class="colorSlider"></li>
 									<li><label for="greenRange">Green:</label><input type="range" min="0" max="255" id="greenRange" class="colorSlider"></li>
 									<li><label for="blueRange">Blue:</label><input type="range" min="0" max="255" id="blueRange" class="colorSlider"></li>
@@ -41,15 +41,16 @@
 									<option value="96">96px</option>
 								</select>
 							</li>
-							<li><img class="imageEraser" src="./img/eraser_icon.png" alt="Eraser"></li>
-							<li><input type="button" id="resetbutton" value="Reset Canvas"></li>
+							<div id="liEraser"><li><img id="imageEraser" class="imageEraser" src="./img/eraser_icon.png" alt="Eraser"></li>
+							</div>
+							<li><input type="button" id="btnReset" value="Reset Canvas"></li>
 						</ul>
 					</form>
 
 				</aside>
 
-				<article class="paintArea">
-					<canvas id="paintCanvas"></canvas>
+				<article id="articleCanvas" class="paintArea">
+					<!--<canvas id="paintCanvas"></canvas>-->
 				</article>
 
 			</section>

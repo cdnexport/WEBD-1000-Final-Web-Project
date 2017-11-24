@@ -66,6 +66,9 @@ ul.colorOptions{
 	list-style:none;
 	padding-left:20px;
 }
+#chkEraser{
+	opacity: 0;
+}
 
 article.paintArea{
 	display: inline-block;
@@ -74,8 +77,7 @@ article.paintArea{
 	height:508px;
 }
 canvas#paintCanvas{
-	width:607px;
-	height:508px;
+	border:solid black 1px;
 }
 
 footer{
