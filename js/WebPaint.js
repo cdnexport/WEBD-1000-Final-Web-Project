@@ -64,6 +64,7 @@ function load(){
 		if(letDrop){
 			getColor(e);
 			letDrop = !letDrop;
+			setCursor("./img/cursors/brushcursor.png");
 		}
 		setDropperBackground(letDrop);
 	});
@@ -82,18 +83,9 @@ function load(){
 	})
 }
 
+//Sets the cursor
 function setCursor(cursor){
-	let img = new Image();
-	img.src = cursor;
-	img.width = document.getElementById("selectSize").value;
-	img.height = document.getElementById("selectSize").value;
-	let img2 = document.createElement("img");
-	img2.src = cursor;
-	img2.width = document.getElementById("selectSize").value;
-	img2.height = document.getElementById("selectSize").value;
-
-	console.log(img);
-	document.getElementById("paintCanvas").style.cursor = "url("+img.src+"),auto";
+	document.getElementById("paintCanvas").style.cursor = "url("+cursor+"),auto";
 }
 
 //Occurs when the file chosen is changed
