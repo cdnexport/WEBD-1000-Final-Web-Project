@@ -44,6 +44,10 @@
 							<div id="divDropper"><li><text class="textDropper">Pick a color from the canvas</text><img class="imgDropper" id="imgDropper" src="./img/dropper.png" alt="Paint Dropper"></li></div>
 							<div id="liEraser"><li><img id="imageEraser" class="imageEraser" src="./img/eraser_icon.png" alt="Eraser"></li>
 							</div>
+							<form action="#" method="post">
+								<li><label for="imgWeb">Add an image:</label><input type="text" id="imgWeb" size="32"><input type="button" id="btnImgWeb" value="Add"></li>
+								<li><text id="imgWebError" class="imgWebError">* Please enter a link.</text><text id="imgWebInvalid" class="imgWebError">* Please enter a valid direct-image link.</text></li>
+							</form>
 							<li><input type="button" id="btnReset" value="Reset Canvas"></li>
 						</ul>
 					</form>
