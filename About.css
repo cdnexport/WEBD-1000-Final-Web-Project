@@ -3,3 +3,35 @@ section.contentBody{
 	height:553px;
 	background-color:coral;
 }
+figure.imageSchool{
+	margin-top: 0;
+	padding-top: 40px;
+	display: inline-block;
+	float:right;
+}
+figcaption{
+	font-style:italic;
+	font-size:small;
+	text-align: center;
+}
+
+section.contentBody p:first-of-type{
+	padding-top: 40px;
+}
+section.contentBody p{
+	margin-top:0px;
+	padding-left: 25px;
+}
+table{
+	padding-top:15px;
+	padding-left:100px;
+	width:770px;
+}
+th{
+	padding-bottom:16px;
+	font-size:larger;
+}
+td{
+	padding-left: 40px;
+	padding-bottom:30px;
+}
