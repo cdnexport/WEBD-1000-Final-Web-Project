@@ -67,18 +67,14 @@ function load(){
 		}
 		setDropperBackground(letDrop);
 	});
-
-	//For the file image
-	document.getElementById("imgWeb").addEventListener("change",(e)=>{
-		//console.log(document.getElementById("imgWeb").value);
-		//handleFiles();
-	});
 }
 
+//Occurs when the file chosen is changed
 function handleFiles(files){
-	console.log(files);
-	if (!files.length){
-		alert("no file selected");
+	document.getElementById("imgWebInvalid").style.display="none";
+	let fileRegEx = new RegExp(/^.*\.(jpg|jpeg|ico|png)$/,'i')
+	if (!fileRegEx.test(document.getElementById("imgWeb").value)){
+		document.getElementById("imgWebInvalid").style.display="inline";
 	}
 	else{
 		let img = new Image();
@@ -89,46 +85,16 @@ function handleFiles(files){
 		drawImage(img);
 	}
 }
+
 //Draws the image link to the canvas.
 function drawImage(image){
 	let canvas = document.getElementById("paintCanvas")
 	let ctx = canvas.getContext("2d");
 	let link = document.getElementById("imgWeb").value;
 
-	//let image = new Image();
-	//image.crossorigin = "Anonymous";
-	//image.src = link;
 	image.onload = () =>{
 		ctx.drawImage(image,0,0,canvas.width,canvas.height);
 	}
-	console.log("VALUE" +link);
-	//https://www.smashingmagazine.com/wp-content/uploads/2015/06/10-dithering-opt.jpg
-}
-
-//Checks the web image text box for errors.
-function imageLinkHasErrors(){
-	document.getElementById("imgWebError").style.display = "none";
-	document.getElementById("imgWebInvalid").style.display = "none";
-
-	let link = document.getElementById("imgWeb").value;
-	let hasError = false;
-	let linkRegEx = new RegExp(/^https:\/\/.*\.(jpg|png|jpeg)$/,'i');
-
-	console.log(link);
-	if(!link){
-		if(!hasError){
-			console.log("no value");
-			document.getElementById("imgWebError").style.display = "inline";
-			hasError = true;
-		}
-	}
-	if(!linkRegEx.test(link)){
-		if(!hasError){
-			document.getElementById("imgWebInvalid").style.display = "inline";
-			hasError = true;
-		}
-	}
-	return hasError;
 }
 
 //Sets the background color for the dropper image.
