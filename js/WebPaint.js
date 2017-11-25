@@ -1,4 +1,3 @@
-//var mousedown = false;
 function load(){
 	createCanvas();
 	fillListBackground();
