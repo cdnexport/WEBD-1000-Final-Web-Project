@@ -51,27 +51,20 @@
 									<option value="96">96px</option>
 								</select>
 							</li>
-							<li>
-								<text class="textDropper">Pick a color from the canvas</text>
-								<img class="imgDropper" id="imgDropper" src="./img/dropper.png" alt="Paint Dropper">
+							<li>Pick a color from the canvas<img class="imgDropper" id="imgDropper" src="./img/dropper.png" alt="Paint Dropper">
 							</li>
-							<li>
-								<text class="textLine">Draw a line (Click twice)</text>
-								<img class="imgLine" id="imgLine" src="./img/line.png" alt="Line Drawer">
+							<li>Draw a line (Click twice)<img class="imgLine" id="imgLine" src="./img/line.png" alt="Line Drawer">
 							</li>
 							<li>
 								<img id="imageEraser" class="imageEraser" src="./img/eraser_icon.png" alt="Eraser">
 							</li>
-							<form>
-								<li>
-									<label for="imgFile">Add an image:</label>
-									<input type="file" id="imgFile" size="32" onchange="handleFiles(this.files)">
-									<input type="button" value="Browse..." onclick="document.getElementById('imgFile').click();">
-								</li>
-								<li>
-									<text id="imgFileInvalid">* Please enter a valid image file.</text>
-								</li>
-							</form>
+							<li>
+								<label for="imgFile">Add an image:</label>
+								<input type="file" id="imgFile" size="32" onchange="handleFiles(this.files)">
+								<input type="button" value="Browse..." onclick="document.getElementById('imgFile').click();">
+							</li>
+							<li id="imgFileInvalid">* Please enter a valid image file.
+							</li>
 							<li><input type="button" id="btnReset" value="Reset Canvas"></li>
 						</ul>
 					</form>
