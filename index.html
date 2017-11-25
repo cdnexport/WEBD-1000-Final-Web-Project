@@ -25,13 +25,23 @@
 							<li>Color Sliders</li>
 							<li>
 								<ul class="colorOptions" id="colorOptionsList">
-									<li><label for="redRange">Red:</label><input type="range" min="0" max="255" id="redRange" class="colorSlider"></li>
-									<li><label for="greenRange">Green:</label><input type="range" min="0" max="255" id="greenRange" class="colorSlider"></li>
-									<li><label for="blueRange">Blue:</label><input type="range" min="0" max="255" id="blueRange" class="colorSlider"></li>
+									<li>
+										<label for="redRange">Red:</label>
+										<input type="range" min="0" max="255" id="redRange" class="colorSlider">
+									</li>
+									<li>
+										<label for="greenRange">Green:</label>
+										<input type="range" min="0" max="255" id="greenRange" class="colorSlider">
+									</li>
+									<li>
+										<label for="blueRange">Blue:</label>
+										<input type="range" min="0" max="255" id="blueRange" class="colorSlider">
+									</li>
 								</ul>
 							</li>
-							<li><label for="selectSize">Brush Size</label><select id="selectSize" name="size">
-								<!-- Placeholder values for now -->
+							<li>
+								<label for="selectSize">Brush Size</label>
+								<select id="selectSize" name="size">
 									<option value="5">5px</option>
 									<option value="8">8px</option>
 									<option value="12">12px</option>
@@ -52,8 +62,9 @@
 							<li>
 								<img id="imageEraser" class="imageEraser" src="./img/eraser_icon.png" alt="Eraser">
 							</li>
-							<form action="#" method="post">
-								<li><label for="imgFile">Add an image:</label>
+							<form>
+								<li>
+									<label for="imgFile">Add an image:</label>
 									<input type="file" id="imgFile" size="32" onchange="handleFiles(this.files)">
 									<input type="button" value="Browse..." onclick="document.getElementById('imgFile').click();">
 								</li>

@@ -13,11 +13,8 @@ nav.headerNav{
 	height:135px;
 }
 ul.navList{
-
 	list-style: none;
-	display:inline-block;
 	margin-bottom: 0px;
-	
 	padding-left:0px;
 	font-size: 18pt;
 	position:absolute;
@@ -82,10 +79,6 @@ ul.colorOptions{
 ul.colorOptions input{
 	position:absolute;
 	left:65px;
-}
-#liEraser{
-  height:154.5px;
-	width:154px;
 }
 #imgFile{
 	display: none;
