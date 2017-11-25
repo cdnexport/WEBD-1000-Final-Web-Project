@@ -25,13 +25,23 @@
 							<li>Color Sliders</li>
 							<li>
 								<ul class="colorOptions" id="colorOptionsList">
-									<li><label for="redRange">Red:</label><input type="range" min="0" max="255" id="redRange" class="colorSlider"></li>
-									<li><label for="greenRange">Green:</label><input type="range" min="0" max="255" id="greenRange" class="colorSlider"></li>
-									<li><label for="blueRange">Blue:</label><input type="range" min="0" max="255" id="blueRange" class="colorSlider"></li>
+									<li>
+										<label for="redRange">Red:</label>
+										<input type="range" min="0" max="255" id="redRange" class="colorSlider">
+									</li>
+									<li>
+										<label for="greenRange">Green:</label>
+										<input type="range" min="0" max="255" id="greenRange" class="colorSlider">
+									</li>
+									<li>
+										<label for="blueRange">Blue:</label>
+										<input type="range" min="0" max="255" id="blueRange" class="colorSlider">
+									</li>
 								</ul>
 							</li>
-							<li><label for="selectSize">Brush Size</label><select id="selectSize" name="size">
-								<!-- Placeholder values for now -->
+							<li>
+								<label for="selectSize">Brush Size</label>
+								<select id="selectSize" name="size">
 									<option value="5">5px</option>
 									<option value="8">8px</option>
 									<option value="12">12px</option>
@@ -41,18 +51,20 @@
 									<option value="96">96px</option>
 								</select>
 							</li>
-							<div id="divDropper"><li><text class="textDropper">Pick a color from the canvas</text><img class="imgDropper" id="imgDropper" src="./img/dropper.png" alt="Paint Dropper"></li></div>
-
-							<div id="divLineMaker"><li><text class="textLine">Draw a line (Click twice)</text><img class="imgLine" id="imgLine" src="./img/line.png" alt="Line Drawer"></li></div>
-
-							<div id="liEraser"><li><img id="imageEraser" class="imageEraser" src="./img/eraser_icon.png" alt="Eraser"></li>
-							</div>
-							<form action="#" method="post">
-								<li><label for="imgWeb">Add an image:</label>
-									<input type="file" id="imgWeb" size="32" onchange="handleFiles(this.files)">
-									<input type="button" value="Browse..." onclick="document.getElementById('imgWeb').click();">
-								<li><text id="imgWebInvalid" class="imgWebError">* Please enter a valid image file.</text></li>
-							</form>
+							<li>Pick a color from the canvas<img class="imgDropper" id="imgDropper" src="./img/dropper.png" alt="Paint Dropper">
+							</li>
+							<li>Draw a line (Click twice)<img class="imgLine" id="imgLine" src="./img/line.png" alt="Line Drawer">
+							</li>
+							<li>
+								<img id="imageEraser" class="imageEraser" src="./img/eraser_icon.png" alt="Eraser">
+							</li>
+							<li>
+								<label for="imgFile">Add an image:</label>
+								<input type="file" id="imgFile" size="32" onchange="handleFiles(this.files)">
+								<input type="button" value="Browse..." onclick="document.getElementById('imgFile').click();">
+							</li>
+							<li id="imgFileInvalid">* Please enter a valid image file.
+							</li>
 							<li><input type="button" id="btnReset" value="Reset Canvas"></li>
 						</ul>
 					</form>
