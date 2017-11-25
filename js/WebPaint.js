@@ -21,7 +21,7 @@ function load(){
 	//For the canvas element.
 	var mousedown=false;
 	document.getElementById("paintCanvas").addEventListener("mousedown",()=>{
-		if(!letDrop){
+		if(!letDrop && !drawLine){
 			mousedown=true;
 		}
 	});
@@ -37,8 +37,10 @@ function load(){
 	document.getElementById("btnReset").addEventListener("click",()=>{
 		willErase = false;
 		letDrop = false;
+		drawLine = false;
 		setIconBackground(imgEraser, willErase);
 		setIconBackground(imgDropper, letDrop);
+		setIconBackground(imgLine, drawLine);
 
 		resetCanvas();
 	});
@@ -68,10 +70,12 @@ function load(){
 			setIconBackground(imgLine, drawLine);
 		}
 		letDrop = !letDrop;
-		console.log("DROPPER CLICK");
 		setIconBackground(imgDropper, letDrop);
 		
 	});
+
+	//Handling clicks on the canvas.
+	let clicks = 0;
 	document.getElementById("paintCanvas").addEventListener("click",(e)=>{
 		if(letDrop){
 			getColor(e);
@@ -79,12 +83,23 @@ function load(){
 			setCursor("./img/cursors/brushcursor.png");
 			setIconBackground(imgDropper, letDrop);
 		}
-		
+		if(drawLine){
+			if(clicks % 2 == 0){
+				prevDot = [e.offsetX, e.offsetY];
+			}
+			else{
+				nextDot = [e.offsetX, e.offsetY];
+				makeLine(prevDot,nextDot);
+			}
+			clicks += 1;
+		}
 	});
 
 	//For the line maker.
 	var drawLine = false;
 	var imgLine = document.getElementById("imgLine");
+	var prevDot;
+	var nextDot;
 	imgLine.addEventListener("click", (e) =>{
 		if(willErase || letDrop){
 			willErase = false;
@@ -92,6 +107,7 @@ function load(){
 			letDrop = false;
 			setIconBackground(imgDropper, letDrop);
 		}
+		prevDot = null;
 		drawLine = !drawLine;
 		setIconBackground(imgLine, drawLine);
 		
@@ -111,7 +127,19 @@ function load(){
 		else{
 			setCursor("./img/cursors/brushcursor.png");
 		}
-	})
+	});
+}
+
+//Draws 
+function makeLine(prevDot,nextDot){
+	let canvas = document.getElementById("paintCanvas")
+	let ctx = canvas.getContext("2d");
+
+	ctx.moveTo(prevDot[0], prevDot[1]);
+	ctx.lineTo(nextDot[0], nextDot[1]);
+	ctx.lineWidth = document.getElementById("selectSize").value;
+	ctx.strokeStyle = fillListBackground();
+	ctx.stroke();
 }
 
 //Sets the cursor
@@ -149,15 +177,11 @@ function drawImage(image){
 
 //Sets the background of the icons to indicate if they are the active option
 function setIconBackground(element, flag){
-	console.log("INSIDE ICONBG");
 	let aside = document.getElementsByClassName("paintControls")[0];
 	let imgIcons = aside.getElementsByTagName("img");
-	console.log(imgIcons.length);
 
 	for (var i = 0; i < imgIcons.length; i++) {
-		console.log("element: "+element.id+" imgIcon["+i+"]"+imgIcons[i].id + "FLAG "+flag);
 		if(element.id == imgIcons[i].id && flag){
-			console.log("BGCOLOR");
 			element.style.backgroundColor = "grey";
 		}
 		else{
