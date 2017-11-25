@@ -72,6 +72,9 @@ ul.paintOptions:first-of-type{
 img.imgDropper{
 	margin-left:20px;
 }
+img.imgLine{
+	margin-left:39px;
+}
 ul.colorOptions{
 	list-style:none;
 	padding-left:10px;

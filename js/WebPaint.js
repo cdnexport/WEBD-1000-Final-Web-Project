@@ -21,7 +21,7 @@ function load(){
 	//For the canvas element.
 	var mousedown=false;
 	document.getElementById("paintCanvas").addEventListener("mousedown",()=>{
-		if(!letDrop){
+		if(!letDrop && !drawLine){
 			mousedown=true;
 		}
 	});
@@ -33,45 +33,84 @@ function load(){
 		mousedown=false;
 	});
 
-	//for the eraser.
-	var willErase = false;
-	document.getElementById("imageEraser").addEventListener("click",()=>{
-		if(letDrop){
-			letDrop = !letDrop;
-			setDropperBackground(letDrop);
-		}
-		willErase = !willErase;
-		setEraserBackground(willErase);
-	});
-
 	//For the reset button.
 	document.getElementById("btnReset").addEventListener("click",()=>{
 		willErase = false;
 		letDrop = false;
-		setEraserBackground(willErase);
-		setDropperBackground(letDrop);
+		drawLine = false;
+		setIconBackground(imgEraser, willErase);
+		setIconBackground(imgDropper, letDrop);
+		setIconBackground(imgLine, drawLine);
 
 		resetCanvas();
 	});
 
+	//for the eraser.
+	var willErase = false;
+	var imgEraser = document.getElementById("imageEraser")
+	imgEraser.addEventListener("click",()=>{
+		if(letDrop || drawLine){
+			letDrop = false;
+			setIconBackground(imgDropper, letDrop);
+			drawLine = false;
+			setIconBackground(imgLine, drawLine);
+		}
+		willErase = !willErase;
+		setIconBackground(imgEraser, willErase);
+	});
+
 	//For the dropper.
 	var letDrop = false;
-	document.getElementById("imgDropper").addEventListener("click",(e)=>{
-		if(willErase){
-			willErase = !willErase;
-			setEraserBackground(willErase)
+	var imgDropper = document.getElementById("imgDropper")
+	imgDropper.addEventListener("click",(e)=>{
+		if(willErase || drawLine){
+			willErase = false;
+			setIconBackground(imgEraser,willErase)
+			drawLine = false;
+			setIconBackground(imgLine, drawLine);
 		}
 		letDrop = !letDrop;
-		setDropperBackground(letDrop);
+		setIconBackground(imgDropper, letDrop);
 		
 	});
+
+	//Handling clicks on the canvas.
+	let clicks = 0;
 	document.getElementById("paintCanvas").addEventListener("click",(e)=>{
 		if(letDrop){
 			getColor(e);
 			letDrop = !letDrop;
 			setCursor("./img/cursors/brushcursor.png");
+			setIconBackground(imgDropper, letDrop);
 		}
-		setDropperBackground(letDrop);
+		if(drawLine){
+			if(clicks % 2 == 0){
+				prevDot = [e.offsetX, e.offsetY];
+			}
+			else{
+				nextDot = [e.offsetX, e.offsetY];
+				makeLine(prevDot,nextDot);
+			}
+			clicks += 1;
+		}
+	});
+
+	//For the line maker.
+	var drawLine = false;
+	var imgLine = document.getElementById("imgLine");
+	var prevDot;
+	var nextDot;
+	imgLine.addEventListener("click", (e) =>{
+		if(willErase || letDrop){
+			willErase = false;
+			setIconBackground(imgEraser,willErase);
+			letDrop = false;
+			setIconBackground(imgDropper, letDrop);
+		}
+		prevDot = null;
+		drawLine = !drawLine;
+		setIconBackground(imgLine, drawLine);
+		
 	});
 
 	//for the cursors
@@ -82,10 +121,25 @@ function load(){
 		else if(willErase){
 			setCursor("./img/cursors/erasercursor.png");
 		}
+		else if(drawLine){
+			setCursor("./img/cursors/linecursor.png");
+		}
 		else{
 			setCursor("./img/cursors/brushcursor.png");
 		}
-	})
+	});
+}
+
+//Draws 
+function makeLine(prevDot,nextDot){
+	let canvas = document.getElementById("paintCanvas")
+	let ctx = canvas.getContext("2d");
+
+	ctx.moveTo(prevDot[0], prevDot[1]);
+	ctx.lineTo(nextDot[0], nextDot[1]);
+	ctx.lineWidth = document.getElementById("selectSize").value;
+	ctx.strokeStyle = fillListBackground();
+	ctx.stroke();
 }
 
 //Sets the cursor
@@ -121,13 +175,18 @@ function drawImage(image){
 	}
 }
 
-//Sets the background color for the dropper image.
-function setDropperBackground(letDrop){
-	if(letDrop){
-		document.getElementById("imgDropper").style.backgroundColor = "grey";
-	}
-	else{
-		document.getElementById("imgDropper").style.backgroundColor = "coral";
+//Sets the background of the icons to indicate if they are the active option
+function setIconBackground(element, flag){
+	let aside = document.getElementsByClassName("paintControls")[0];
+	let imgIcons = aside.getElementsByTagName("img");
+
+	for (var i = 0; i < imgIcons.length; i++) {
+		if(element.id == imgIcons[i].id && flag){
+			element.style.backgroundColor = "grey";
+		}
+		else{
+			imgIcons[i].style.backgroundColor = "coral";
+		}
 	}
 }
 
@@ -169,17 +228,6 @@ function createCanvas(){
 	canvas.height=551;
 	let art = document.getElementById("articleCanvas");
 	art.appendChild(canvas);
-}
-
-//Occurs when the eraser checkbox is pressed
-function setEraserBackground(willErase){
-	let li = document.getElementById("liEraser");
-	if(willErase){
-		li.style.backgroundColor = "grey";
-	}
-	else{
-		li.style.backgroundColor = "coral";
-	}
 }
 
 //Draws on the canvas element
