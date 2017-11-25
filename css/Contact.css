@@ -28,26 +28,26 @@ textarea{
 td.ta{
 	padding-bottom: 0px;
 }
-td.textAreaErrorTd{
+.textAreaErrorTd{
 	padding-top: 0px;
 }
 td.sub{
 	padding-right: 20px;
 	text-align: right;
 }
-text.errorText{
+.errorText{
 	font-style: italic;
 	color:red;
 }
-text#txtNameError{
+p#txtNameError{
 	display: none;
 }
-text#txtEmailError{
+p#txtEmailError{
 	display: none;
 }
-text#txtEmailInvalid{
+p#txtEmailInvalid{
 	display: none;
 }
-text#txtAreaCommentsError{
+p#txtAreaCommentsError{
 	display: none;
 }

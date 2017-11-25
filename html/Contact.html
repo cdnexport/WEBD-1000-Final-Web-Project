@@ -28,24 +28,45 @@
 							</tr>
 						<tbody>
 							<tr>
-								<td class="lbl"><label for="txtName">Enter your name:</label></td>
-								<td><input id="txtName" type="text"><text id="txtNameError" class="errorText">* Field is required.</text></td>
+								<td class="lbl">
+									<label for="txtName">Enter your name:</label>
+								</td>
+								<td>
+									<input id="txtName" type="text">
+									<p id="txtNameError" class="errorText">* Field is required.</p>
+								</td>
 							</tr>
 							<tr>
-								<td class="lbl"><label for="txtEmail">Enter your email:</label></td>
-								<td><input id="txtEmail" type="email"><text id="txtEmailError" class="errorText">* Field is required.</text><text class="errorText" id="txtEmailInvalid">* Email entered is invalid.</text></td>
+								<td class="lbl">
+									<label for="txtEmail">Enter your email:</label>
+								</td>
+								<td>
+									<input id="txtEmail" type="email">
+									<p id="txtEmailError" class="errorText">* Field is required.</p>
+									<p class="errorText" id="txtEmailInvalid">* Email entered is invalid.</p>
+								</td>
 							</tr>
 							<tr>
-								<td class="lbl"><label for="txtAreaComments">Comments:</label></td><td class="ta"><textarea id="txtAreaComments" cols="50" rows="4"></textarea></td>
+								<td class="lbl">
+									<label for="txtAreaComments">Comments:</label>
+								</td>
+								<td class="ta">
+									<textarea id="txtAreaComments" cols="50" rows="4"></textarea>
+								</td>
 							</tr>
 							<tr>
 								<td></td>
-								<td class="textAreaErrorTd"><text id="txtAreaCommentsError" class="errorText">* Field is required.</text></td>
-							</tr>
+								<td class="textAreaErrorTd">
+									<p id="txtAreaCommentsError" class="errorText">* Field is required.</p>
+								</td>
 							</tr>
 							<tr>
-								<td class="sub"><input id="btnSubmit" type="submit" value="Submit"></td>
-								<td class="res"><input id="btnReset" type="reset" value="Reset"></td>
+								<td class="sub">
+									<input id="btnSubmit" type="submit" value="Submit">
+								</td>
+								<td class="res">
+									<input id="btnReset" type="reset" value="Reset">
+								</td>
 							</tr>
 						</tbody>
 					</table>
