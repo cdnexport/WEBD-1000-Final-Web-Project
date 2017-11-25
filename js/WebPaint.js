@@ -96,7 +96,7 @@ function setCursor(cursor){
 //Occurs when the file chosen is changed
 function handleFiles(files){
 	document.getElementById("imgWebInvalid").style.display="none";
-	let fileRegEx = new RegExp(/^.*\.(jpg|jpeg|ico|png)$/,'i')
+	let fileRegEx = new RegExp(/^.*\.(jpg|jpeg|ico|png|gif)$/,'i')
 	if (!fileRegEx.test(document.getElementById("imgWeb").value)){
 		document.getElementById("imgWebInvalid").style.display="inline";
 	}
