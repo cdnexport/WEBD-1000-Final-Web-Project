@@ -87,17 +87,12 @@ ul.colorOptions input{
   height:154.5px;
 	width:154px;
 }
-text.imgWebError{
-	color:red;
-	font-style: italic;
-}
-#imgWeb{
+#imgFile{
 	display: none;
 }
-#imgWebError{
-	display:none;
-}
-#imgWebInvalid{
+#imgFileInvalid{
+	color:red;
+	font-style: italic;
 	display: none;
 }
 article.paintArea{

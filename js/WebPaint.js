@@ -149,10 +149,10 @@ function setCursor(cursor){
 
 //Occurs when the file chosen is changed
 function handleFiles(files){
-	document.getElementById("imgWebInvalid").style.display="none";
+	document.getElementById("imgFileInvalid").style.display="none";
 	let fileRegEx = new RegExp(/^.*\.(jpg|jpeg|ico|png|gif)$/,'i')
-	if (!fileRegEx.test(document.getElementById("imgWeb").value)){
-		document.getElementById("imgWebInvalid").style.display="inline";
+	if (!fileRegEx.test(document.getElementById("imgFile").value)){
+		document.getElementById("imgFileInvalid").style.display="inline";
 	}
 	else{
 		let img = new Image();
@@ -168,7 +168,7 @@ function handleFiles(files){
 function drawImage(image){
 	let canvas = document.getElementById("paintCanvas")
 	let ctx = canvas.getContext("2d");
-	let link = document.getElementById("imgWeb").value;
+	let link = document.getElementById("imgFile").value;
 
 	image.onload = () =>{
 		ctx.drawImage(image,0,0,canvas.width,canvas.height);
@@ -216,6 +216,7 @@ function getColor(e){
 function resetCanvas(){
 	let canvas = document.getElementById("paintCanvas")
 	let ctx = canvas.getContext("2d");
+	document.getElementById("imgFileInvalid").style.display="none";
 	if(ctx){
 		ctx.clearRect(0,0,canvas.width,canvas.height);
 	}
