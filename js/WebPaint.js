@@ -96,7 +96,7 @@ function setCursor(cursor){
 //Occurs when the file chosen is changed
 function handleFiles(files){
 	document.getElementById("imgWebInvalid").style.display="none";
-	let fileRegEx = new RegExp(/^.*\.(jpg|jpeg|ico|png)$/,'i')
+	let fileRegEx = new RegExp(/^.*\.(jpg|jpeg|ico|png|gif)$/,'i')
 	if (!fileRegEx.test(document.getElementById("imgWeb").value)){
 		document.getElementById("imgWebInvalid").style.display="inline";
 	}
@@ -198,12 +198,12 @@ function mouseMoveHandler(e,mousedown,color,willErase){
 		let width = document.getElementById("selectSize").value;
 		ctx.lineWidth = width;
 		if(willErase){
-			ctx.clearRect(mouseX,mouseY,width,width);
+			ctx.strokeStyle = "rgb(255,255,255)";
 		}
 		else{
 			ctx.strokeStyle = color;
-			ctx.stroke();
 		}
+		ctx.stroke();
 	}
 }
 //Set the background color of the colorOptions list to the active slider color.
