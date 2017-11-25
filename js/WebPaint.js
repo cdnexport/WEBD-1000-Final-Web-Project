@@ -28,7 +28,7 @@ function load(){
 		let c = fillListBackground();
 		mouseMoveHandler(e,mousedown,c,willErase);
 	});
-	document.getElementById("paintCanvas").addEventListener("mouseup",()=>{
+	document.addEventListener("mouseup",()=>{
 		mousedown=false;
 	});
 
