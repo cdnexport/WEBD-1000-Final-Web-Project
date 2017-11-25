@@ -84,7 +84,7 @@ function load(){
 			setIconBackground(imgDropper, letDrop);
 		}
 		if(drawLine){
-			if(clicks % 2 == 0){
+			if(clicks  %2 == 0){
 				prevDot = [e.offsetX, e.offsetY];
 			}
 			else{
@@ -92,6 +92,9 @@ function load(){
 				makeLine(prevDot,nextDot);
 			}
 			clicks += 1;
+		}
+		else{
+			clicks = 0;
 		}
 	});
 
