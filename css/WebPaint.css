@@ -46,7 +46,6 @@ section.contentBody{
 }
 
 aside.paintControls{
-	position:relative;
 	display:inline-block;
 	padding-left:5px;
 	padding-right:5px;
@@ -67,18 +66,19 @@ ul.paintOptions:first-of-type{
 	line-height: 2;
 }
 img.imgDropper{
-	margin-left:20px;
+	margin-right:20px;
+	float: right;
 }
 img.imgLine{
-	margin-left:39px;
+	margin-right: 20px;
+	float: right;
 }
 ul.colorOptions{
 	list-style:none;
 	padding-left:10px;
 }
 ul.colorOptions input{
-	position:absolute;
-	left:65px;
+	float: right;
 }
 #imgFile{
 	display: none;
@@ -93,6 +93,7 @@ article.paintArea{
 	background-color: #FFFFFF;
 	width:607px;
 	height:553px;
+	float: right;
 }
 canvas#paintCanvas{
 	border:solid black 1px;
@@ -100,6 +101,7 @@ canvas#paintCanvas{
 
 footer{
 	text-align: center;
+	clear: both;
 }
 footer p{
 	margin-top:0px;
