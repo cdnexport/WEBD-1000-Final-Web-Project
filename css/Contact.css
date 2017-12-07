@@ -39,6 +39,7 @@ td.sub{
 	font-style: italic;
 	color:red;
 }
+
 p#txtNameError{
 	display: none;
 }
@@ -50,4 +51,14 @@ p#txtEmailInvalid{
 }
 p#txtAreaCommentsError{
 	display: none;
+}
+p#txtPhoneError{
+	display: none;
+}
+p#txtPhoneInvalid{
+	display: none;
+}
+
+input:focus{
+	background-color: yellow;
 }

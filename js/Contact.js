@@ -14,9 +14,10 @@ function validate(e){
 
 //Checks the form for input errors.
 function checkErrors(){
-	let forms = ["txtName","txtEmail","txtAreaComments"];
+	let forms = ["txtName","txtEmail","txtAreaComments", "txtPhone"];
 	let isError = false;
 	let emailRegEx = new RegExp(/^(?!.*[\._][\._@])[\da-z][\da-z\._]*@[\da-z]+\.[a-z]{2,3}$/,'i');
+	let phoneRegEx = new RegExp(/^(?!.*-555-)1-\d{3}-\d{3}-\d{4}$/);
 
 	for (var i = 0; i < forms.length; i++) {
 		let element = document.getElementById(forms[i]);
@@ -32,6 +33,20 @@ function checkErrors(){
 		}
 		if(element == document.getElementById("txtEmail")){
 			if(validateWithRegEx(emailRegEx,element)){
+				if(document.getElementById(forms[i]+"Error").style.display != "inline"){
+					document.getElementById(forms[i]+"Invalid").style.display = "inline";
+				}
+				if(!isError){
+					element.focus();
+				}
+				isError = true;
+			}
+			else{
+				document.getElementById(forms[i]+"Invalid").style.display = "none";
+			}
+		}
+		if(element == document.getElementById("txtPhone")){
+			if(validateWithRegEx(phoneRegEx,element)){
 				if(document.getElementById(forms[i]+"Error").style.display != "inline"){
 					document.getElementById(forms[i]+"Invalid").style.display = "inline";
 				}
@@ -71,6 +86,9 @@ function resetForm(){
 	document.getElementById("txtAreaComments").value = "";
 	document.getElementById("txtAreaCommentsError").style.display = "none";
 	document.getElementById("txtName").focus();
+	document.getElementById("txtPhone").value = "";
+	document.getElementById("txtPhoneError").style.display = "none";
+	document.getElementById("txtPhoneInvalid").style.display = "none";
 }
 
 document.addEventListener("DOMContentLoaded",load);
