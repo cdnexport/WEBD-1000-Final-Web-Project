@@ -1,6 +1,8 @@
+//Adds all of the event listeners
 function load(){
 	createCanvas();
 	fillListBackground();
+
 	//For the color sliders.
 	var intervalId;
 	var colorSliders = document.getElementsByClassName("colorSlider");
@@ -132,7 +134,11 @@ function load(){
 	});
 }
 
-//Draws 
+/*Draws a straight line on the canvas from prevDot[x,y] to nextDot[x,y]
+*
+* param prevDot The location of the first click.
+* param nextDot The location of the second click.
+*/
 function makeLine(prevDot,nextDot){
 	let canvas = document.getElementById("paintCanvas")
 	let ctx = canvas.getContext("2d");
@@ -144,12 +150,18 @@ function makeLine(prevDot,nextDot){
 	ctx.stroke();
 }
 
-//Sets the cursor
+/* Sets the cursor to the selected option.
+* 
+* param cursor The image url that needs to be set as the cursor.
+*/
 function setCursor(cursor){
 	document.getElementById("paintCanvas").style.cursor = "url("+cursor+"),auto";
 }
 
-//Occurs when the file chosen is changed
+/* Occurs when the file chosen is changed. Constructs an image objec that the canvas can draw.
+*
+* param files The image that the user wants drawn on the canvas.
+*/
 function handleFiles(files){
 	document.getElementById("imgFileInvalid").style.display="none";
 	let fileRegEx = new RegExp(/^.*\.(jpg|jpeg|ico|png|gif)$/,'i')
@@ -162,22 +174,21 @@ function handleFiles(files){
 		img.onload = () => {
 			window.URL.revokeObjectURL(this.src);
 		}
-		drawImage(img);
+
+		let canvas = document.getElementById("paintCanvas")
+		let ctx = canvas.getContext("2d");
+
+		img.onload = () =>{
+			ctx.drawImage(img,0,0,canvas.width,canvas.height);
+		}
 	}
 }
 
-//Draws the image link to the canvas.
-function drawImage(image){
-	let canvas = document.getElementById("paintCanvas")
-	let ctx = canvas.getContext("2d");
-	let link = document.getElementById("imgFile").value;
-
-	image.onload = () =>{
-		ctx.drawImage(image,0,0,canvas.width,canvas.height);
-	}
-}
-
-//Sets the background of the icons to indicate if they are the active option
+/* Sets the background of the icons to indicate if they are the active option.
+*
+* param element The icon that needs it's background updated.
+* param flag Boolean of whether the icon should appear enabled or disabled.
+*/
 function setIconBackground(element, flag){
 	let aside = document.getElementsByClassName("paintControls")[0];
 	let imgIcons = aside.getElementsByTagName("img");
@@ -233,7 +244,12 @@ function createCanvas(){
 	art.appendChild(canvas);
 }
 
-//Draws on the canvas element
+/* Draws on the canvas element
+*
+* param mousedown Whether a mousee button is held down.
+* param color The RGB value that the line's color should be.
+* param willErase Whether it should be erasing.
+*/
 function mouseMoveHandler(e,mousedown,color,willErase){
 	let canvas = document.getElementById("paintCanvas");
 	let ctx = canvas.getContext("2d");
