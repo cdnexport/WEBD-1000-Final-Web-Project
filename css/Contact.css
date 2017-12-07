@@ -58,3 +58,7 @@ p#txtPhoneError{
 p#txtPhoneInvalid{
 	display: none;
 }
+
+input:focus{
+	background-color: yellow;
+}
