@@ -111,6 +111,7 @@ function load(){
 			letDrop = false;
 			setIconBackground(imgDropper, letDrop);
 		}
+		clicks = 0;
 		prevDot = null;
 		drawLine = !drawLine;
 		setIconBackground(imgLine, drawLine);
