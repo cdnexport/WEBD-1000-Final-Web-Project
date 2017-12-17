@@ -8,9 +8,7 @@ function load(){
 	var colorSliders = document.getElementsByClassName("colorSlider");
 	for (var i = 0; i < colorSliders.length; i++) {
 		colorSliders[i].addEventListener("mousedown",() => {
-			intervalId = setInterval(() => {
-				fillListBackground();
-			}, 100);
+			intervalId = setInterval(fillListBackground, 100);
 		});
 	}
 	for (var i = 0; i < colorSliders.length; i++) {
