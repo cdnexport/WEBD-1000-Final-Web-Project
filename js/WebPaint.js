@@ -25,8 +25,7 @@ function load(){
 		}
 	});
 	document.getElementById("paintCanvas").addEventListener("mousemove",(e)=>{
-		let c = getPaintColor();
-		mouseMoveHandler(e,mousedown,c,willErase);
+		mouseMoveHandler(e,mousedown,willErase);
 	});
 	document.addEventListener("mouseup",()=>{
 		mousedown=false;
@@ -246,10 +245,9 @@ function createCanvas(){
 /* Draws on the canvas element
 *
 * param mousedown Whether a mousee button is held down.
-* param color The RGB value that the line's color should be.
 * param willErase Whether it should be erasing.
 */
-function mouseMoveHandler(e,mousedown,color,willErase){
+function mouseMoveHandler(e,mousedown,willErase){
 	let canvas = document.getElementById("paintCanvas");
 	let ctx = canvas.getContext("2d");
 
@@ -267,7 +265,7 @@ function mouseMoveHandler(e,mousedown,color,willErase){
 			ctx.strokeStyle = "rgb(255,255,255)";
 		}
 		else{
-			ctx.strokeStyle = color;
+			ctx.strokeStyle = getPaintColor();
 		}
 		ctx.stroke();
 	}
