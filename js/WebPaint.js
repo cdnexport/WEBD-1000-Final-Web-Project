@@ -8,9 +8,7 @@ function load(){
 	var colorSliders = document.getElementsByClassName("colorSlider");
 	for (var i = 0; i < colorSliders.length; i++) {
 		colorSliders[i].addEventListener("mousedown",() => {
-			intervalId = setInterval(() => {
-				fillListBackground();
-			}, 100);
+			intervalId = setInterval(fillListBackground, 100);
 		});
 	}
 	for (var i = 0; i < colorSliders.length; i++) {
@@ -27,8 +25,7 @@ function load(){
 		}
 	});
 	document.getElementById("paintCanvas").addEventListener("mousemove",(e)=>{
-		let c = fillListBackground();
-		mouseMoveHandler(e,mousedown,c,willErase);
+		mouseMoveHandler(e,mousedown,willErase);
 	});
 	document.addEventListener("mouseup",()=>{
 		mousedown=false;
@@ -101,10 +98,9 @@ function load(){
 
 	//For the line maker.
 	var drawLine = false;
-	var imgLine = document.getElementById("imgLine");
 	var prevDot;
 	var nextDot;
-	imgLine.addEventListener("click", (e) =>{
+	imgLine.addEventListener("click", () =>{
 		if(willErase || letDrop){
 			willErase = false;
 			setIconBackground(imgEraser,willErase);
@@ -147,7 +143,7 @@ function makeLine(prevDot,nextDot){
 	ctx.moveTo(prevDot[0], prevDot[1]);
 	ctx.lineTo(nextDot[0], nextDot[1]);
 	ctx.lineWidth = document.getElementById("selectSize").value;
-	ctx.strokeStyle = fillListBackground();
+	ctx.strokeStyle = getPaintColor();
 	ctx.stroke();
 }
 
@@ -208,10 +204,8 @@ function setIconBackground(element, flag){
 function getColor(e){
 	let canvas = document.getElementById("paintCanvas")
 	let ctx = canvas.getContext("2d");
-	let mouseX = e.offsetX;
-	let mouseY = e.offsetY;
 
-	let colorData = ctx.getImageData(mouseX,mouseY,1,1).data;
+	let colorData = ctx.getImageData(e.offsetX, e.offsetY, 1, 1).data;
 	if(colorData[3]==0){
 		document.getElementById("redRange").value = 255;
 		document.getElementById("greenRange").value = 255;
@@ -231,55 +225,53 @@ function resetCanvas(){
 	let canvas = document.getElementById("paintCanvas")
 	let ctx = canvas.getContext("2d");
 	document.getElementById("imgFileInvalid").style.display="none";
-	if(ctx){
-		ctx.clearRect(0,0,canvas.width,canvas.height);
-	}
+	ctx.clearRect(0,0,canvas.width,canvas.height);
 }
+
 //Creates the canvas and places it onto the page.
 function createCanvas(){
 	let canvas = document.createElement("canvas");
 	canvas.id = "paintCanvas";
 	canvas.width=605;
 	canvas.height=551;
-	let art = document.getElementById("articleCanvas");
-	art.appendChild(canvas);
+	document.getElementById("articleCanvas").appendChild(canvas);
 }
 
 /* Draws on the canvas element
 *
 * param mousedown Whether a mousee button is held down.
-* param color The RGB value that the line's color should be.
 * param willErase Whether it should be erasing.
 */
-function mouseMoveHandler(e,mousedown,color,willErase){
+function mouseMoveHandler(e,mousedown,willErase){
 	let canvas = document.getElementById("paintCanvas");
 	let ctx = canvas.getContext("2d");
 
 	if(!mousedown){
 		ctx.beginPath();
-		ctx.moveTo(mouseX,mouseY);
+		ctx.moveTo(e.offsetX,e.offsetY);
 	}
 	if(mousedown){
-		var mouseX = e.offsetX;
-		var mouseY = e.offsetY;
-		ctx.lineTo(mouseX,mouseY);
-		let width = document.getElementById("selectSize").value;
-		ctx.lineWidth = width;
+		ctx.lineTo(e.offsetX,e.offsetY);
+		ctx.lineWidth = document.getElementById("selectSize").value;
 		if(willErase){
 			ctx.strokeStyle = "rgb(255,255,255)";
 		}
 		else{
-			ctx.strokeStyle = color;
+			ctx.strokeStyle = getPaintColor();
 		}
 		ctx.stroke();
 	}
 }
+
 //Set the background color of the colorOptions list to the active slider color.
 function fillListBackground(){
+	document.getElementById("colorOptionsList").style.background = getPaintColor();
+}
+
+//Gets the active color for painting
+function getPaintColor(){
 	let color = 'rgb('+document.getElementById("redRange").value+','+
 		document.getElementById("greenRange").value+','+document.getElementById("blueRange").value+')';
-	
-	document.getElementById("colorOptionsList").style.background = color;
 	return color;
 }
 
