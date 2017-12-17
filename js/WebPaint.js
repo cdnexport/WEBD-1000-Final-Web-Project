@@ -27,7 +27,7 @@ function load(){
 		}
 	});
 	document.getElementById("paintCanvas").addEventListener("mousemove",(e)=>{
-		let c = fillListBackground();
+		let c = getPaintColor();
 		mouseMoveHandler(e,mousedown,c,willErase);
 	});
 	document.addEventListener("mouseup",()=>{
@@ -147,7 +147,7 @@ function makeLine(prevDot,nextDot){
 	ctx.moveTo(prevDot[0], prevDot[1]);
 	ctx.lineTo(nextDot[0], nextDot[1]);
 	ctx.lineWidth = document.getElementById("selectSize").value;
-	ctx.strokeStyle = fillListBackground();
+	ctx.strokeStyle = getPaintColor();
 	ctx.stroke();
 }
 
@@ -276,11 +276,13 @@ function mouseMoveHandler(e,mousedown,color,willErase){
 }
 //Set the background color of the colorOptions list to the active slider color.
 function fillListBackground(){
-	let color = 'rgb('+document.getElementById("redRange").value+','+
-		document.getElementById("greenRange").value+','+document.getElementById("blueRange").value+')';
-	
-	document.getElementById("colorOptionsList").style.background = color;
-	return color;
+	document.getElementById("colorOptionsList").style.background = getPaintColor();
 }
 
+//Gets the active color for painting
+function getPaintColor(){
+	let color = 'rgb('+document.getElementById("redRange").value+','+
+		document.getElementById("greenRange").value+','+document.getElementById("blueRange").value+')';
+	return color;
+}
 document.addEventListener("DOMContentLoaded",load);
