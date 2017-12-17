@@ -98,10 +98,9 @@ function load(){
 
 	//For the line maker.
 	var drawLine = false;
-	var imgLine = document.getElementById("imgLine");
 	var prevDot;
 	var nextDot;
-	imgLine.addEventListener("click", (e) =>{
+	imgLine.addEventListener("click", () =>{
 		if(willErase || letDrop){
 			willErase = false;
 			setIconBackground(imgEraser,willErase);
@@ -205,10 +204,8 @@ function setIconBackground(element, flag){
 function getColor(e){
 	let canvas = document.getElementById("paintCanvas")
 	let ctx = canvas.getContext("2d");
-	let mouseX = e.offsetX;
-	let mouseY = e.offsetY;
 
-	let colorData = ctx.getImageData(mouseX,mouseY,1,1).data;
+	let colorData = ctx.getImageData(e.offsetX, e.offsetY, 1, 1).data;
 	if(colorData[3]==0){
 		document.getElementById("redRange").value = 255;
 		document.getElementById("greenRange").value = 255;
@@ -228,18 +225,16 @@ function resetCanvas(){
 	let canvas = document.getElementById("paintCanvas")
 	let ctx = canvas.getContext("2d");
 	document.getElementById("imgFileInvalid").style.display="none";
-	if(ctx){
-		ctx.clearRect(0,0,canvas.width,canvas.height);
-	}
+	ctx.clearRect(0,0,canvas.width,canvas.height);
 }
+
 //Creates the canvas and places it onto the page.
 function createCanvas(){
 	let canvas = document.createElement("canvas");
 	canvas.id = "paintCanvas";
 	canvas.width=605;
 	canvas.height=551;
-	let art = document.getElementById("articleCanvas");
-	art.appendChild(canvas);
+	document.getElementById("articleCanvas").appendChild(canvas);
 }
 
 /* Draws on the canvas element
@@ -253,14 +248,11 @@ function mouseMoveHandler(e,mousedown,willErase){
 
 	if(!mousedown){
 		ctx.beginPath();
-		ctx.moveTo(mouseX,mouseY);
+		ctx.moveTo(e.offsetX,e.offsetY);
 	}
 	if(mousedown){
-		var mouseX = e.offsetX;
-		var mouseY = e.offsetY;
-		ctx.lineTo(mouseX,mouseY);
-		let width = document.getElementById("selectSize").value;
-		ctx.lineWidth = width;
+		ctx.lineTo(e.offsetX,e.offsetY);
+		ctx.lineWidth = document.getElementById("selectSize").value;
 		if(willErase){
 			ctx.strokeStyle = "rgb(255,255,255)";
 		}
