@@ -262,6 +262,7 @@ function mouseMoveHandler(e,mousedown,willErase){
 		ctx.stroke();
 	}
 }
+
 //Set the background color of the colorOptions list to the active slider color.
 function fillListBackground(){
 	document.getElementById("colorOptionsList").style.background = getPaintColor();
@@ -273,4 +274,5 @@ function getPaintColor(){
 		document.getElementById("greenRange").value+','+document.getElementById("blueRange").value+')';
 	return color;
 }
+
 document.addEventListener("DOMContentLoaded",load);
